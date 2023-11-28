@@ -1,6 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Overview
+A sample [Next.js](https://nextjs.org/) application bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Run
+Install dependencies:
+```
+npm i
+```
+
+Replace the following values into the [Canvas.jsx](./src/Canvas.jsx):
+- `PUBLIC_TOKEN` by the "Public Token" obtained from the [3dverse console in the "API Access" section](https://3dverse.com/docs/getting-started/setup-your-first-app/#d2f2797242f04420ab89476ea26ca944).
+- `SCENE_UUID` by the "ASSET ID" of your public scene obtained from the [3dverse console in the "Asset browser" section](https://3dverse.com/docs/getting-started/setup-your-first-app/#d2f2797242f04420ab89476ea26ca944).
+
+Run the web dev server:
+```
+npm run dev
+```
+
+# Getting Started with Next.js app
+
+This project was bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 

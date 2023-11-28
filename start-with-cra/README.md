@@ -1,3 +1,21 @@
+# Overview
+A sample [React](https://react.dev/reference/react) application bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# Run
+Install dependencies:
+```
+npm i
+```
+
+Replace the following values into the [Canvas.jsx](./src/Canvas.jsx):
+- `PUBLIC_TOKEN` by the "Public Token" obtained from the [3dverse console in the "API Access" section](https://3dverse.com/docs/getting-started/setup-your-first-app/#d2f2797242f04420ab89476ea26ca944).
+- `SCENE_UUID` by the "ASSET ID" of your public scene obtained from the [3dverse console in the "Asset browser" section](https://3dverse.com/docs/getting-started/setup-your-first-app/#d2f2797242f04420ab89476ea26ca944).
+
+Run the web dev server:
+```
+npm start
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

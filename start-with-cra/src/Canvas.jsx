@@ -33,6 +33,7 @@ export const Canvas = () => {
         style={{
           height: '100vh',
           width: '100vw',
+          verticalAlign: 'middle',
         }}
       ></canvas>
     </>
