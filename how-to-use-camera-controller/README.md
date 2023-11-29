@@ -17,4 +17,4 @@ Replace the following values into the [main.js](./main.js):
 - `PUBLIC_TOKEN` by the "Public Token" obtained from the [3dverse console in the "API Access" section](https://3dverse.com/docs/getting-started/setup-your-first-app/#d2f2797242f04420ab89476ea26ca944).
 - `SCENE_UUID` by the "ASSET ID" of your public scene obtained from the [3dverse console in the "Asset browser" section](https://3dverse.com/docs/getting-started/setup-your-first-app/#d2f2797242f04420ab89476ea26ca944).
 
-Now open your web browser on http://localhost:5000 to enter the 3dverse session of your scene. 
+Now open your web browser on http://localhost:3000 to enter the 3dverse session of your scene. 
