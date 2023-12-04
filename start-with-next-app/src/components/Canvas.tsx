@@ -19,7 +19,12 @@ export const Canvas = () => {
         src='https://cdn.3dverse.com/legacy/sdk/latest/SDK3DVerse.js'
         onLoad={initApp}
       />
-      <canvas id='display-canvas' className='w-screen h-screen'></canvas>
+      <canvas
+        id='display-canvas'
+        className='w-screen h-screen'
+        tabIndex="1"
+      >
+      </canvas>
     </>
   );
 };
