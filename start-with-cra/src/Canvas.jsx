@@ -35,6 +35,7 @@ export const Canvas = () => {
           width: '100vw',
           verticalAlign: 'middle',
         }}
+        tabIndex="1"
       ></canvas>
     </>
   );
