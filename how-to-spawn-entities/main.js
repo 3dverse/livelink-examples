@@ -73,10 +73,7 @@ const spawnSceneLinker = async function(sceneTransform, options = {}) {
 
     let template = new SDK3DVerse.EntityTemplate();
     template.attachComponent('scene_ref', { value: sceneToLinkUUID });
-    template.attachComponent('local_transform', {
-        ...template.entityTemplate.local_transform,
-        ...sceneTransform
-    });
+    template.attachComponent('local_transform', sceneTransform);
     const entity = await template.instantiateTransientEntity("linked scene name", parentEntity, deleteOnClientDisconnection);
     return entity;
 }
@@ -106,10 +103,7 @@ const spawnLight = async function(pointLightComponentValue, pointLightTransform,
     let template = new SDK3DVerse.EntityTemplate();
     template.attachComponent('point_light', pointLightComponentValue);
     template.attachComponent('spot_light', { cutoff });
-    template.attachComponent('local_transform', {
-        ...template.entityTemplate.local_transform,
-        ...pointLightTransform
-    });
+    template.attachComponent('local_transform', pointLightTransform);
     const entity = await template.instantiateTransientEntity("light name", parentEntity, deleteOnClientDisconnection);
     return entity;
 }
