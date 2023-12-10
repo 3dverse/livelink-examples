@@ -7,8 +7,8 @@ const pbrOpqUntexShaderUUID = "744556b0-67b5-4329-ba4f-a04c04f92b1c";
 
 async function initApp() {
     const isSessionCreator = await SDK3DVerse.joinOrStartSession({
-        userToken: 'PUBLIC_TOKEN',
-        sceneUUID: 'SCENE_UUID',
+        userToken: 'public_RR2g0HT0Xf3XNB6l',
+        sceneUUID: 'b1db5ac4-bfc8-495f-a8d8-d5012ed93cd9',
         canvas: document.getElementById('display-canvas'),
         viewportProperties: {
             defaultControllerType: SDK3DVerse.controller_type.orbit,
@@ -124,4 +124,18 @@ async function browseEntities() {
     componentFilter = { mandatoryComponents: ['material'], forbiddenComponents : [] };
     const entitiesWithMaterial = await engineAPI.findEntitiesByComponents(componentFilter);
     console.log(`Entities with a material component:`, entitiesWithMaterial);
+
+    // Beware this returns an array of entities because several entities may share the
+    // same EUID. For example if the same scene his referenced 2 times in the scene graph
+    // using the scene_ref component, then each entity of this referenced scene exists
+    // 2 times in the scene graph with the same EUID. However each entity as a unique runtime
+    // identfier (RTID) during the rendering session: Entity.getID().
+    // To test it you need to grab an entity unique identifier (EUID) from the 3dverse editor,
+    // this cannot be demonstrated because the EUIDs of the entities of your sample scene are not
+    // knowned by advance.
+    /*
+    const euid = '00000000-0000-0000-0000-000000000000';
+    const entities = await engineAPI.findEntitiesByEUIDs();
+    console.log(`The entities with EUID=${euid}:`, entities);
+    */
 }
