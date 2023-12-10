@@ -31,7 +31,7 @@ async function initApp() {
         return;
     }
 
-    // Setup the entities needed to run the sample.
+    // Prepare the entities needed to run the sample.
     // But do it a single time for the whole session life time.
     if(isSessionCreator) {
         // Remove material reference component from rootEntity if there's one
@@ -51,8 +51,8 @@ async function initApp() {
         childB.setComponent('material', { dataJSON: { albedo: [0, 0, 1] } })
     }
 
-    // Demonstrate the various ways to seek entities
-    seekEntities();
+    // Demonstrate the various ways to browse the scene graph
+    browseEntities();
 }
 
 
@@ -86,30 +86,42 @@ const duplicateEntity = async function(entitySource, options = {}) {
 }
 
 
-async function seekEntities() {
+async function browseEntities() {
     const { engineAPI } = SDK3DVerse;
+
+    // Get the root entities of the scene graph
     const rootEntities = await engineAPI.getRootEntities();
     console.log("Scene graph root entities:", rootEntities);
+
+    // Just get the first entity inside rootEntities which is named "Env" 
     const envEntity = rootEntities.find(e => e.getName() === 'Env');
-    console.log("Environment (skybox) entity:", rootEntities);
+    console.log('Environment (skybox) root  named "Env":', envEntity);
+
+    // Beware this only returns the last found entity for each name passed as parameters of
+    // the findEntitiesByNames method
     const entities = await engineAPI.findEntitiesByNames(rootEntityName);
     const rootEntity = entities[0];
     console.log(`The entity named ${rootEntityName}:`, rootEntity);
+
+    // This is async because the entities may need to be fecthed from the 3dverse editor backend,
+    // if some are not already inside the SDK entity registry
     const children = await rootEntity.getChildren();
     console.log(`The children of ${rootEntityName} entity:`, children);
+
+    // This is not async because if we have an entity in the SDK entity registry, then it
+    // means its entity lineage has already been fecthed  
     const parent = children[0].getParent();
     console.log(`The parent of the first children of ${rootEntityName} entity:`, parent);
 
-    // Beware the changes performed on rootEntity and its duplicated children were not saved
-    // through Entity.save() method. So forth the rootEntity is returned by the following call
-    // to findEntitiesByComponents because it originally has a material_ref that was changed for a material component.
+    // The rootEntity will not be returned by this query, because we didn't call Entity.save() 
+    // after substituting its `material_ref` for a `material` so it will still hold its initial values
     let componentFilter = { mandatoryComponents: [], forbiddenComponents : ['material'] };
-    const entitiesWithMaterial = await engineAPI.findEntitiesByComponents(componentFilter);
-    console.log(`Entities without a material component:`, entitiesWithMaterial);
+    const entitiesWithouyMaterial = await engineAPI.findEntitiesByComponents(componentFilter);
+    console.log(`Entities without a material component:`, entitiesWithouyMaterial);
 
-    // For the same reason as previous the comment, the children of rootEntity, returned by
-    // the following call to findEntitiesByComponents, show a red albedo value in their material component.
+    // For the same reason as previous the comment, the children of rootEntity show a red 
+    // albedo value in their material component
     componentFilter = { mandatoryComponents: ['material'], forbiddenComponents : [] };
-    const entitiesWithoutMaterial = await engineAPI.findEntitiesByComponents(componentFilter);
-    console.log(`Entities with a material component:`, entitiesWithoutMaterial);
+    const entitiesWithMaterial = await engineAPI.findEntitiesByComponents(componentFilter);
+    console.log(`Entities with a material component:`, entitiesWithMaterial);
 }
