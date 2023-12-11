@@ -7,8 +7,8 @@ const pbrOpqUntexShaderUUID = "744556b0-67b5-4329-ba4f-a04c04f92b1c";
 
 async function initApp() {
     const isSessionCreator = await SDK3DVerse.joinOrStartSession({
-        userToken: 'public_RR2g0HT0Xf3XNB6l',
-        sceneUUID: 'b1db5ac4-bfc8-495f-a8d8-d5012ed93cd9',
+        userToken: 'PUBLIC_TOKEN',
+        sceneUUID: 'SCENE_UUID',
         canvas: document.getElementById('display-canvas'),
         viewportProperties: {
             defaultControllerType: SDK3DVerse.controller_type.orbit,
@@ -135,7 +135,7 @@ async function browseEntities() {
     // knowned by advance.
     /*
     const euid = '00000000-0000-0000-0000-000000000000';
-    const entities = await engineAPI.findEntitiesByEUIDs();
+    const entities = await engineAPI.findEntitiesByEUIDs(euid);
     console.log(`The entities with EUID=${euid}:`, entities);
     */
 }
