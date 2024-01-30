@@ -20,7 +20,7 @@ export const Canvas = () => {
       <canvas
         id='display-canvas'
         className='w-screen h-screen'
-        tabIndex="1"
+        tabIndex={1}
       >
       </canvas>
     </>
