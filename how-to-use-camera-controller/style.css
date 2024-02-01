@@ -6,3 +6,12 @@ canvas {
   width: 100vw;
   vertical-align: middle;
 }
+
+.button-container {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  bottom: 2rem;
+  left: 2rem;
+}
